@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Todo List Web App</title>
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body>
+        <div class="hero-img">
+            <div class="box">
+                <% newListItems.forEach(function(itemElement) { %>
+                    <form action="/delete" method="post">
+                      <div class="item">
+                        <input type="checkbox" name="checkbox" value="<%= itemElement._id %>" onChange="this.form.submit()">
+                        <p><%=  itemElement.content  %></p>
+                      </div>
+                      <input type="hidden" name="listName" value="<%= listTitle %>">
+                    </form>
+                    
+                <% }); %>
+            </div>
+        </div>
+        
+
+        <div>
+            <form class="item" action="/" method="post">
+                <button type="submit" name="list" value="<%= listTitle %>">+</button>
+                <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            </form>
+        </div>
+    </body>
+</html>
